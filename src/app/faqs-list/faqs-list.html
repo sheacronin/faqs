@@ -1,3 +1,5 @@
-@for (faq of faqItems; track $index) {
-  <app-faq-item [faq]="faq" />
-}
+<section class="faqs-list">
+  @for (faq of faqItems; track $index) {
+    <app-faq-item [faq]="faq" />
+  }
+</section>
