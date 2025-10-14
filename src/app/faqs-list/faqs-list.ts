@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FaqItem } from '../faq-item/faq-item';
+import { Faqs } from '../faqs.service';
+import { Faq } from '../faq.interface';
 
 @Component({
   selector: 'app-faqs-list',
@@ -8,9 +10,10 @@ import { FaqItem } from '../faq-item/faq-item';
   styleUrl: './faqs-list.css',
 })
 export class FaqsList {
-  faqItems = [
-    { id: 1, title: 'Creating an account?', body: 'Lorem ipsum' },
-    { id: 2, title: 'Trouble logging in?', body: 'Lorem ipsum' },
-    { id: 3, title: 'Billing status?', body: 'Lorem ipsum' },
-  ];
+  private faqService = inject(Faqs);
+  faqItems: Faq[];
+
+  constructor() {
+    this.faqItems = this.faqService.getAllFaqs();
+  }
 }

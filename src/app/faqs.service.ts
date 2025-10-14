@@ -1,0 +1,118 @@
+import { Injectable } from '@angular/core';
+import { Faq } from './faq.interface';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class Faqs {
+  faqs: Faq[] = [
+    {
+      id: 1,
+      title: 'What is this app for?',
+      body: 'This app helps users manage and track their daily tasks efficiently.',
+    },
+    {
+      id: 2,
+      title: 'How do I reset my password?',
+      body: "Go to the login screen, click 'Forgot password?', and follow the prompts.",
+    },
+    {
+      id: 3,
+      title: 'Can I use the app offline?',
+      body: 'Yes, most features work offline and sync once you reconnect to the internet.',
+    },
+    {
+      id: 4,
+      title: 'Is my data secure?',
+      body: 'All data is encrypted in transit and at rest using industry-standard security.',
+    },
+    {
+      id: 5,
+      title: 'How do I delete my account?',
+      body: 'Navigate to Settings > Account > Delete Account and confirm your choice.',
+    },
+    {
+      id: 6,
+      title: 'Does the app have a dark mode?',
+      body: 'Yes, you can toggle dark mode under Settings > Appearance.',
+    },
+    {
+      id: 7,
+      title: 'Can I export my data?',
+      body: 'Yes, go to Settings > Data Export to download your information as a CSV file.',
+    },
+    {
+      id: 8,
+      title: 'How do I contact support?',
+      body: 'Use the in-app Support form or email us at support@example.com.',
+    },
+    {
+      id: 9,
+      title: 'Is there a mobile version?',
+      body: 'Yes, the app is available on both iOS and Android platforms.',
+    },
+    {
+      id: 10,
+      title: 'How do I enable notifications?',
+      body: 'Allow notifications in your device settings and enable them under App Preferences.',
+    },
+    {
+      id: 11,
+      title: 'Can multiple users share an account?',
+      body: 'No, each user must have their own account for privacy and security reasons.',
+    },
+    {
+      id: 12,
+      title: 'Does the app support integrations?',
+      body: 'Yes, integrations with Google Calendar and Slack are available under Settings > Integrations.',
+    },
+    {
+      id: 13,
+      title: 'Is there a premium version?',
+      body: 'Yes, premium users get extra features like analytics and cloud sync.',
+    },
+    {
+      id: 14,
+      title: 'How do I upgrade my plan?',
+      body: 'Go to Settings > Billing and select a new plan to upgrade instantly.',
+    },
+    {
+      id: 15,
+      title: 'What happens if I cancel my subscription?',
+      body: 'You’ll retain access until the end of your billing cycle, then revert to the free plan.',
+    },
+    {
+      id: 16,
+      title: 'How do I change my email address?',
+      body: 'Go to Settings > Account Info and update your email address.',
+    },
+    {
+      id: 17,
+      title: 'Can I recover deleted items?',
+      body: 'Yes, deleted items remain in the Trash for 30 days before permanent removal.',
+    },
+    {
+      id: 18,
+      title: 'How do I sync across devices?',
+      body: 'Log in with the same account on all devices to automatically sync data.',
+    },
+    {
+      id: 19,
+      title: 'Does the app collect analytics data?',
+      body: 'Only anonymized usage data is collected to improve user experience.',
+    },
+    {
+      id: 20,
+      title: 'Where can I find tutorials?',
+      body: 'Visit our Help Center for video tutorials and step-by-step guides.',
+    },
+  ];
+
+  getAllFaqs() {
+    return this.faqs;
+  }
+
+  getFaq(id: number) {
+    return this.faqs.find((faq) => faq.id === id);
+  }
+}

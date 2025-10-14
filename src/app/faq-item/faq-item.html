@@ -1,4 +1,5 @@
 <article class="faq-item">
   <h2>{{ faq().title }}</h2>
   <p>{{ faq().body }}</p>
+  <a [routerLink]="['/faqs', faq().id]">See details</a>
 </article>

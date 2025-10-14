@@ -1,9 +1,10 @@
 import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Faq } from '../faq.interface';
 
 @Component({
   selector: 'app-faq-item',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './faq-item.html',
   styleUrl: './faq-item.css',
 })
