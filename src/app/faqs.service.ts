@@ -116,4 +116,9 @@ export class Faqs {
   getFaq(id: number) {
     return this.faqs.find((faq) => faq.id === id);
   }
+
+  updateFaq(faq: Faq) {
+    const i = this.faqs.findIndex(({ id }) => id === faq.id);
+    this.faqs[i] = faq;
+  }
 }
