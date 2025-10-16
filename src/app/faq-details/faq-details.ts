@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Faqs } from '../faqs.service';
 import { Faq } from '../faq.interface';
 
 @Component({
   selector: 'app-faq-details',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './faq-details.html',
   styleUrl: './faq-details.css',
 })

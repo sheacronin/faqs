@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FaqItem } from '../faq-item/faq-item';
+import { FaqItem } from './faq-item/faq-item';
 import { Faqs } from '../faqs.service';
 import { Faq } from '../faq.interface';
 
