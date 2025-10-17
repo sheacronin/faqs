@@ -1,5 +1,5 @@
 <section class="faqs-list">
-  @for (faq of faqItems; track $index) {
+  @for (faq of faqItems$ | async; track $index) {
     <app-faq-item [faq]="faq" />
   }
 </section>

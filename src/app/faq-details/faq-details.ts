@@ -1,27 +1,29 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import { Faqs } from '../faqs.service';
 import { Faq } from '../faq.interface';
 import { EditFaq } from './edit-faq/edit-faq';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-faq-details',
-  imports: [RouterLink, EditFaq],
+  imports: [RouterLink, AsyncPipe, EditFaq],
   templateUrl: './faq-details.html',
   styleUrl: './faq-details.css',
 })
 export class FaqDetails {
   private faqService = inject(Faqs);
   private activatedRoute = inject(ActivatedRoute);
-  faq: Faq | undefined;
-  isEditing: boolean = false;
+  faq$!: Observable<Faq>;
+  isEditing: WritableSignal<boolean> = signal(false);
 
   constructor() {
     const id = this.activatedRoute.snapshot.params['id'];
-    this.faq = this.faqService.getFaq(Number(id));
+    this.faq$ = this.faqService.getFaq(Number(id));
   }
 
   toggleEditing() {
-    this.isEditing = !this.isEditing;
+    this.isEditing.update((val) => !val);
   }
 }

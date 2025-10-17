@@ -3,10 +3,8 @@
   <button (click)="toggleEditing()">Edit</button>
 </div>
 <section>
-  @if (!faq) {
-    <p>Not found</p>
-  } @else {
-    @if (isEditing) {
+  @if (faq$ | async; as faq) {
+    @if (isEditing()) {
       <app-edit-faq [faq]="faq" />
     } @else {
       <h2>{{ faq.title }}</h2>
