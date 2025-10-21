@@ -1,6 +1,14 @@
 header {
   padding: 20px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+.page-title a {
+  color: var(--light-color);
+}
+
+.page-title a:hover {
+  color: var(--primary-color-light);
 }
 
 main {
