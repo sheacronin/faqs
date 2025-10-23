@@ -19,7 +19,12 @@ export class Faqs {
   }
 
   async updateFaq(faq: Faq) {
-    console.log('updating...', faq);
+    const res = await fetch(`${this.url}/${faq.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(faq),
+    });
+    return await res.json();
   }
 
   async createFaq(faq: Omit<Faq, 'id'>) {

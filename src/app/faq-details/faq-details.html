@@ -4,7 +4,7 @@
 </div>
 <section>
   @if (isEditing()) {
-    <app-edit-faq [faq]="faq()" (submittedEdit)="toggleEditing()" />
+    <app-faq-form [faq]="faq()" (submitted)="handleEdit($event)" />
   } @else {
     <h2>{{ faq().title }}</h2>
     <p>{{ faq().body }}</p>

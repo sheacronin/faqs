@@ -2,11 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Faqs } from '../faqs.service';
 import { Faq } from '../faq.interface';
-import { EditFaq } from './edit-faq/edit-faq';
+import { FaqForm } from '../faq-form/faq-form';
 
 @Component({
   selector: 'app-faq-details',
-  imports: [RouterLink, EditFaq],
+  imports: [RouterLink, FaqForm],
   templateUrl: './faq-details.html',
   styleUrl: './faq-details.css',
 })
@@ -25,5 +25,12 @@ export class FaqDetails {
 
   toggleEditing() {
     this.isEditing.update((val) => !val);
+  }
+
+  handleEdit(updatedFaq: Omit<Faq, 'id'>) {
+    this.faqService.updateFaq({ id: this.faq().id, ...updatedFaq }).then((newFaq) => {
+      this.faq.set(newFaq);
+    });
+    this.toggleEditing();
   }
 }

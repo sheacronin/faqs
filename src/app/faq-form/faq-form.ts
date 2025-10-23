@@ -9,12 +9,16 @@ import type { Faq } from '../faq.interface';
   styleUrl: './faq-form.css',
 })
 export class FaqForm {
-  faq = input<Faq>();
+  faq = input<Faq>({ title: '', body: '' } as Faq);
   faqForm = new FormGroup({
     title: new FormControl(''),
     body: new FormControl(''),
   });
   submitted = output<Omit<Faq, 'id'>>();
+
+  ngOnInit() {
+    this.faqForm.setValue({ title: this.faq().title, body: this.faq().body });
+  }
 
   submitFaq() {
     const title = this.faqForm.value.title ?? '';
