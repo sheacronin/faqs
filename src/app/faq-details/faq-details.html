@@ -1,11 +1,11 @@
-<div class="details-menu">
-  <a routerLink="/">< Go back</a>
-  <div class="details-btns">
-    <button (click)="toggleEditing()">{{ !isEditing() ? 'Edit' : 'Cancel' }}</button>
-    <button class="delete-faq-btn delete-btn" (click)="handleDelete()">Delete</button>
+<section class="faq-details">
+  <div class="details-menu">
+    <a routerLink="/">< Go back</a>
+    <div class="details-btns">
+      <button (click)="toggleEditing()">{{ !isEditing() ? 'Edit' : 'Cancel' }}</button>
+      <button class="delete-faq-btn delete-btn" (click)="handleDelete()">Delete</button>
+    </div>
   </div>
-</div>
-<section>
   @if (isEditing()) {
     <app-faq-form [faq]="faq()" (submitted)="handleEdit($event)" />
   } @else {

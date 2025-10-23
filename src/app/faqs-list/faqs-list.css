@@ -1,7 +1,10 @@
 .faqs-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .add-faq-btn {

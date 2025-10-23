@@ -1,3 +1,8 @@
+.faq-details {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .details-menu {
   display: flex;
   align-items: center;

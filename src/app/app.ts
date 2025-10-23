@@ -10,7 +10,3 @@ import { RouterOutlet, RouterLink } from '@angular/router';
 export class App {
   protected readonly title = signal('faqs');
 }
-
-const obj = {
-  name: 'hello',
-};
