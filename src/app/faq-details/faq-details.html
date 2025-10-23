@@ -3,7 +3,9 @@
     <a routerLink="/">< Go back</a>
     <div class="details-btns">
       <button (click)="toggleEditing()">{{ !isEditing() ? 'Edit' : 'Cancel' }}</button>
-      <button class="delete-faq-btn delete-btn" (click)="handleDelete()">Delete</button>
+      @if (isEditing()) {
+        <button class="delete-faq-btn delete-btn" (click)="startDeleting()">Delete</button>
+      }
     </div>
   </div>
   @if (isEditing()) {
@@ -11,5 +13,15 @@
   } @else {
     <h2>{{ faq().title }}</h2>
     <p>{{ faq().body }}</p>
+  }
+  @if (isDeleting()) {
+    <app-modal (canceled)="cancelDeleting()">
+      <div class="confirm-delete">
+        <p>
+          Are you sure you want to delete the FAQ: <strong>{{ faq().title }}</strong>
+        </p>
+        <button class="delete-btn" (click)="handleDelete()">Confirm</button>
+      </div>
+    </app-modal>
   }
 </section>
