@@ -21,6 +21,7 @@
   --dim-light-color: #d6dade;
   --dark-color: #171c1f;
   --bg-color-light: #f6fafe;
+  --warning-color: rgb(186 26 26);
 }
 
 body {

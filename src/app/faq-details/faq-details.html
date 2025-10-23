@@ -1,6 +1,9 @@
 <div class="details-menu">
   <a routerLink="/">< Go back</a>
-  <button (click)="toggleEditing()">{{ !isEditing() ? 'Edit' : 'Cancel' }}</button>
+  <div class="details-btns">
+    <button (click)="toggleEditing()">{{ !isEditing() ? 'Edit' : 'Cancel' }}</button>
+    <button class="delete-faq-btn delete-btn" (click)="handleDelete()">Delete</button>
+  </div>
 </div>
 <section>
   @if (isEditing()) {

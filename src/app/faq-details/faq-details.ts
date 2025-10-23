@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { Faqs } from '../faqs.service';
 import { Faq } from '../faq.interface';
 import { FaqForm } from '../faq-form/faq-form';
@@ -13,6 +13,7 @@ import { FaqForm } from '../faq-form/faq-form';
 export class FaqDetails {
   private faqService = inject(Faqs);
   private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
   faq = signal<Faq>({} as Faq);
   isEditing = signal<boolean>(false);
 
@@ -32,5 +33,11 @@ export class FaqDetails {
       this.faq.set(newFaq);
     });
     this.toggleEditing();
+  }
+
+  handleDelete() {
+    this.faqService.deleteFaq(this.faq().id).then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

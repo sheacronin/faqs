@@ -35,4 +35,11 @@ export class Faqs {
     });
     return await res.json();
   }
+
+  async deleteFaq(id: number): Promise<Faq> {
+    const res = await fetch(`${this.url}/${id}`, {
+      method: 'DELETE',
+    });
+    return await res.json();
+  }
 }
