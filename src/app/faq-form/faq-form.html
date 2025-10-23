@@ -1,0 +1,7 @@
+<form [formGroup]="faqForm" (submit)="submitFaq()">
+  <label for="title">Question</label>
+  <input type="text" id="title" formControlName="title" />
+  <label for="body">Answer</label>
+  <textarea id="body" formControlName="body"></textarea>
+  <button type="submit">Submit</button>
+</form>

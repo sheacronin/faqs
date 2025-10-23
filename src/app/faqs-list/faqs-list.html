@@ -2,4 +2,10 @@
   @for (faq of faqItems(); track faq.id) {
     <app-faq-item [faq]="faq" />
   }
+  <button class="add-faq-btn" (click)="toggleIsAdding()">Add Question</button>
+  @if (isAdding()) {
+    <app-modal (canceled)="toggleIsAdding()"
+      ><app-faq-form (submitted)="handleAdd($event)"
+    /></app-modal>
+  }
 </section>
