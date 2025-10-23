@@ -28,10 +28,11 @@ export class Faqs {
   }
 
   async createFaq(faq: Omit<Faq, 'id'>) {
+    const id = await this.getNextId();
     const res = await fetch(this.url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(faq),
+      body: JSON.stringify({ id, ...faq }),
     });
     return await res.json();
   }
@@ -41,5 +42,10 @@ export class Faqs {
       method: 'DELETE',
     });
     return await res.json();
+  }
+
+  private async getNextId() {
+    const faqs = await this.getAllFaqs();
+    return String(faqs.length + 1);
   }
 }
