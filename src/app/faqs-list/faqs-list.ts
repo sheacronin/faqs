@@ -1,21 +1,21 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FaqItem } from './faq-item/faq-item';
 import { Faqs } from '../faqs.service';
 import { Faq } from '../faq.interface';
-import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-faqs-list',
-  imports: [FaqItem, AsyncPipe],
+  imports: [FaqItem],
   templateUrl: './faqs-list.html',
   styleUrl: './faqs-list.css',
 })
 export class FaqsList {
   private faqService = inject(Faqs);
-  faqItems$: Observable<Faq[]>;
+  faqItems = signal<Faq[]>([]);
 
   constructor() {
-    this.faqItems$ = this.faqService.getAllFaqs();
+    this.faqService.getAllFaqs().then((faqs) => {
+      this.faqItems.set(faqs);
+    });
   }
 }

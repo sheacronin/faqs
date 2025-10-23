@@ -1,14 +1,12 @@
 <div class="details-menu">
   <a routerLink="/">< Go back</a>
-  <button (click)="toggleEditing()">Edit</button>
+  <button (click)="toggleEditing()">{{ !isEditing() ? 'Edit' : 'Cancel' }}</button>
 </div>
 <section>
-  @if (faq$ | async; as faq) {
-    @if (isEditing()) {
-      <app-edit-faq [faq]="faq" />
-    } @else {
-      <h2>{{ faq.title }}</h2>
-      <p>{{ faq.body }}</p>
-    }
+  @if (isEditing()) {
+    <app-edit-faq [faq]="faq()" (submittedEdit)="toggleEditing()" />
+  } @else {
+    <h2>{{ faq().title }}</h2>
+    <p>{{ faq().body }}</p>
   }
 </section>

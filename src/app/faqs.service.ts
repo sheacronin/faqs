@@ -1,24 +1,33 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Faq } from './faq.interface';
-import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Faqs {
   private url = 'http://localhost:3000/faqs';
-  private http = inject(HttpClient);
 
-  getAllFaqs(): Observable<Faq[]> {
-    return this.http.get<Faq[]>(this.url);
+  async getAllFaqs(): Promise<Faq[]> {
+    const res = await fetch(this.url);
+    return await res.json();
   }
 
-  getFaq(id: number): Observable<Faq> {
-    return this.http.get<Faq[]>(`${this.url}?id=${id}`).pipe(map((faqs: Faq[]) => faqs[0]));
+  async getFaq(id: number): Promise<Faq> {
+    const res = await fetch(`${this.url}?id=${id}`);
+    const data: Faq[] = await res.json();
+    return data[0];
   }
 
   async updateFaq(faq: Faq) {
     console.log('updating...', faq);
+  }
+
+  async createFaq(faq: Omit<Faq, 'id'>) {
+    const res = await fetch(this.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(faq),
+    });
+    return await res.json();
   }
 }
